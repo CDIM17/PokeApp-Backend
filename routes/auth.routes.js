@@ -1,5 +1,5 @@
 /*
-Path:'/api/login'
+Path:'/api/v1/login'
 */   
 const {Router}              = require('express');
 const {login,renewToken}    = require('../controllers/auth.controller');
@@ -10,8 +10,8 @@ const {validateJWT}          = require('../middlewares/validate-jwt');
 const router = Router();
 
 router.post('/',[
-                    check('email','El email es obligatorio').isEmail(),
-                    check('password','El password es obligatorio').not().isEmpty(),
+                    check('email','Email is required').isEmail(),
+                    check('password','Password is required').not().isEmpty(),
                     validateFields
                 ],
                 login); 
